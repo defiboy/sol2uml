@@ -73,6 +73,12 @@ contract SomeImpl is SomeInterface {
             _;
         }
 
+    function withModifier() someModifier(true) {
+    }
+
+    function withTwoModifiers(uint256 someInt) someModifier(true) modifierMultiParams(false, someInt) {
+    }
+
     function add(uint256 someNumber) public returns (uint256) {
         somePublicNumber = somePublicNumber + someNumber;
         return somePublicNumber;
@@ -81,10 +87,10 @@ contract SomeImpl is SomeInterface {
     function unnamedFunctionParam(uint256) external {
     }
 
-    function unnamedFunctionParams(uint256, string, bool) external {
+    function unnamedFunctionParams(uint256, string calldata, bool) external {
     }
 
-    function unnamedFunctionParamsMIxed(uint256, string, string testing, bool) external {
+    function unnamedFunctionParamsMixed(uint256, string calldata, string calldata testing, bool) external {
     }
 
     function returnsTuple() public pure returns (bool, string memory) {
